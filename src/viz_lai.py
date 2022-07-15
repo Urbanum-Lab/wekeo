@@ -1,7 +1,7 @@
 import pandas as pd
 import pydeck as pdk
 
-df = pd.read_csv("data/temp_budapest.tsv", sep="\t")
+df = pd.read_csv("data/lai_budapest.tsv", sep="\t")
 
 levels = ["l6", "l7", "l8"]
 
@@ -16,7 +16,7 @@ for level in levels:
         extruded=True,
         coverage=0.8,
         opacity=0.001,
-        get_fill_color="[255-celsius*100, 255, celsius*100]",
+        get_fill_color="[255 - lai*100, 255, lai*100]",
     )
 
     view_state = pdk.ViewState(
@@ -25,6 +25,6 @@ for level in levels:
     r = pdk.Deck(
         layers=[layer],
         initial_view_state=view_state,
-        tooltip={"text": "temperature (celsius): {celsius}"},
+        tooltip={"text": "Leaf Area Index: {lai}"},
     )
-    r.to_html(f"vizs/temperature_{level}.html")
+    r.to_html(f"vizs/lai_{level}.html")
