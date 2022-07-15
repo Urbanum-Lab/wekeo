@@ -15,8 +15,8 @@ for level in levels:
         pickable=True,
         extruded=True,
         coverage=0.8,
-        opacity=0.001,
-        get_fill_color="[255 - lai*100, 255, lai*100]",
+        opacity=0.00001,
+        get_fill_color="[0, 255, lai*1000]",
     )
 
     view_state = pdk.ViewState(

@@ -15,7 +15,7 @@ for level in levels:
         pickable=True,
         extruded=True,
         coverage=0.8,
-        opacity=0.001,
+        opacity=0.0001,
         get_fill_color="[255-celsius*100, 255, celsius*100]",
     )
 
