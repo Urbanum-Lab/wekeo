@@ -109,3 +109,4 @@ render/
 .idea/
 data/
 vizs/
+*.zip

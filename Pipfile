@@ -15,6 +15,7 @@ xarray = {extras = ["complete"], version = "*"}
 scipy = "*"
 eccodes = "*"
 h3 = "*"
+jupyter = "*"
 
 [dev-packages]
 black = "*"

@@ -1,7 +1,16 @@
 import os
 
 import h3
+import pandas as pd
 import xarray as xr
+
+df6 = pd.read_csv("data/aggregated/l6.tsv", sep="\t")
+df7 = pd.read_csv("data/aggregated/l7.tsv", sep="\t")
+df8 = pd.read_csv("data/aggregated/l8.tsv", sep="\t")
+
+h3_l6 = set(df6["l6"])
+h3_l7 = set(df7["l7"])
+h3_l8 = set(df8["l8"])
 
 root_folder = "data/leaf_data"
 fs = [
@@ -40,21 +49,21 @@ with open("data/lai_budapest.tsv", "w") as outfile:
         h6 = h3.geo_to_h3(k[0], k[1], 6)
         h7 = h3.geo_to_h3(k[0], k[1], 7)
         h8 = h3.geo_to_h3(k[0], k[1], 8)
-        o = (
-            str(k[0])
-            + "\t"
-            + str(k[1])
-            + "\t"
-            + str(v)
-            + "\t"
-            + str(h6)
-            + "\t"
-            + str(h7)
-            + "\t"
-            + str(h8)
-            + "\n"
-        )
-        outfile.write(o)
-
+        if h6 in h3_l6 and h7 in h3_l7 and h8 in h3_l8:
+            o = (
+                str(k[0])
+                + "\t"
+                + str(k[1])
+                + "\t"
+                + str(v)
+                + "\t"
+                + str(h6)
+                + "\t"
+                + str(h7)
+                + "\t"
+                + str(h8)
+                + "\n"
+            )
+            outfile.write(o)
 
 print("we have data!!!!! " * 100)
