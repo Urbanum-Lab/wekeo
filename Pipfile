@@ -16,6 +16,8 @@ scipy = "*"
 eccodes = "*"
 h3 = "*"
 jupyter = "*"
+altair = "*"
+pandoc = "*"
 
 [dev-packages]
 black = "*"
