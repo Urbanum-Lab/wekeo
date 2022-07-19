@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import pydeck as pdk
 
@@ -9,6 +10,7 @@ for level in levels:
     print(level)
     df2 = df.groupby(level).mean()
     df2.reset_index(inplace=True, level=[level])
+    df2["rescaled"] = [255 - ((e**3)/100) for e in df2["celsius"]]
     layer = pdk.Layer(
         "H3HexagonLayer",
         df2,
@@ -17,12 +19,12 @@ for level in levels:
         pickable=True,
         extruded=True,
         coverage=0.8,
-        opacity=0.001,
-        get_fill_color="[255-celsius*100, 255, celsius*100]",
+        opacity=0.05,
+        get_fill_color="[255, rescaled, 0]",
     )
 
     view_state = pdk.ViewState(
-        latitude=47.500000, longitude=19.040236, zoom=10, bearing=0, pitch=35
+        latitude=47.500000, longitude=19.040236, zoom=10.5, bearing=0, pitch=35
     )
     r = pdk.Deck(
         layers=[layer],

@@ -16,13 +16,13 @@ for level in levels:
         auto_highlight=True,
         pickable=True,
         extruded=True,
-        coverage=0.8,
-        opacity=0.001,
-        get_fill_color="[255-(lai*1000), 255, lai*1000]",
+        coverage=0.9,
+        opacity=0.05,
+        get_fill_color="[255, 255 - (lai * 100), 0]"
     )
 
     view_state = pdk.ViewState(
-        latitude=47.500000, longitude=19.040236, zoom=10, bearing=0, pitch=35
+        latitude=47.500000, longitude=19.040236, zoom=10.5, bearing=0, pitch=35
     )
     r = pdk.Deck(
         layers=[layer],
